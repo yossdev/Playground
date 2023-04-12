@@ -1,4 +1,5 @@
 import os
+import pathlib
 import shutil
 import sys
 import time
@@ -11,14 +12,17 @@ def main():
     if len(sys.argv) > 1:
         cmd = sys.argv[1]
 
+    root = 'D:/Code/Playground'
+    cwd = 'python/writing-file'
     dir = "dst"
 
     if cmd == "clean":
-        pathDir = f"./{dir}"
+        pathDir = f"{root}/{cwd}/{dir}"
         cleanUp(pathDir)
     else:
         count = 10000
-        createFile(count, dir)
+        src = f"{root}/common/src/test.md"
+        createFile(count, src, dir)
 
     duration = time.time() - start
     print(
@@ -40,11 +44,10 @@ def cleanUp(pathDir):
     print(f"Total deleted: {size} bytes")
 
 
-def createFile(count, dir):
+def createFile(count, src, dir):
     start = time.time()
 
     sumNBytes: int = 0
-    src = "./src/test.md"
 
     for i in range(count):
         dst = f"./{dir}/test{i}.md"
