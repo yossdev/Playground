@@ -1,2 +1,9 @@
-nodejs/*/node_modules
+# rust
 rust/*/target
+
+# go
+go/*/bin
+
+# nodejs
+nodejs/*/node_modules
+nodejs/*/dist

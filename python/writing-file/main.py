@@ -1,5 +1,4 @@
 import os
-import pathlib
 import shutil
 import sys
 import time
@@ -8,15 +7,15 @@ import time
 def main():
     start = time.time()
 
-    cmd = ""
+    cmdArgs = ""
     if len(sys.argv) > 1:
-        cmd = sys.argv[1]
+        cmdArgs = sys.argv[1]
 
     root = 'D:/Code/Playground'
     cwd = 'python/writing-file'
     dir = "dst"
 
-    if cmd == "clean":
+    if cmdArgs == "clean":
         pathDir = f"{root}/{cwd}/{dir}"
         cleanUp(pathDir)
     else:

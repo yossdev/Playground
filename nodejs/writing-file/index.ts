@@ -4,19 +4,22 @@ import path from "path";
 function main() {
   console.time("Time took in nodejs");
 
-  let cmd: string = "";
+  let cmdArgs: string = "";
   if (process.argv.length > 1) {
-    cmd = process.argv[2];
+    cmdArgs = process.argv[2];
   }
 
-  const dir: string = "dst";
+  const root = "D:/Code/Playground";
+  const cwd = "nodejs/writing-file";
+  const dir = "dst";
 
-  if (cmd === "clean") {
-    const pathDir: string = `./${dir}`;
+  if (cmdArgs === "clean") {
+    const pathDir = `${root}/${cwd}/${dir}`;
     cleanUp(pathDir);
   } else {
     const count: number = 10000;
-    createFile(count, dir);
+    const src = `${root}/common/src/test.md`;
+    createFile(count, src, dir);
   }
 
   console.timeEnd("Time took in nodejs");
@@ -35,11 +38,10 @@ function cleanUp(pathDir: string) {
   console.log(`Total deleted: ${sumNBytes} bytes`);
 }
 
-function createFile(count: number, dir: string) {
+function createFile(count: number, src: string, dir: string) {
   console.time("Time took in nodejs createFile");
 
   let sumNBytes: number = 0;
-  const src = "./src/test.md";
 
   for (let i = 0; i < count; i++) {
     const dst = `./${dir}/test${i}.md`;

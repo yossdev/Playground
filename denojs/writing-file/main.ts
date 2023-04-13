@@ -8,14 +8,17 @@ export default function main() {
     cmdArgs = Deno.args[0];
   }
 
+  const root = "D:/Code/Playground";
+  const cwd = "denojs/writing-file";
   const dir = "dst";
 
   if (cmdArgs === "clean") {
-    const pathDir = `./${dir}`;
+    const pathDir = `${root}/${cwd}/${dir}`;
     cleanUp(pathDir);
   } else {
-    const count = 10000;
-    createFile(count, dir);
+    const count = 10_000;
+    const src = `${root}/common/src/test.md`;
+    createFile(count, src, dir);
   }
 
   console.timeEnd("Time took in denojs");
@@ -36,11 +39,10 @@ function cleanUp(pathDir: string) {
   console.log(`Total deleted: ${sumNBytes} bytes`);
 }
 
-function createFile(count: number, dir: string) {
+function createFile(count: number, src: string, dir: string) {
   console.time("Time took in denojs createFile");
 
   let sumNBytes = 0;
-  const src = "./src/test.md";
 
   for (let i = 0; i < count; i++) {
     const dst = `./${dir}/test${i}.md`;
