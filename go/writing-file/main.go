@@ -12,19 +12,22 @@ import (
 func main() {
 	start := time.Now()
 
-	var cmd string
+	var cmdArgs string
 	if len(os.Args) > 1 {
-		cmd = os.Args[1]
+		cmdArgs = os.Args[1]
 	}
 
-	dir := "dst"
+	const root string = "D:/Code/Playground"
+	const cwd string = "go/writing-file"
+	const dir string = "dst"
 
-	if cmd == "clean" {
-		pathDir := fmt.Sprintf("./%s", dir)
+	if cmdArgs == "clean" {
+		pathDir := fmt.Sprintf("%s/%s/%s", root, cwd, dir)
 		cleanUp(pathDir)
 	} else {
-		count := 10000
-		createFile(count, dir)
+		const count = 10000
+		src := fmt.Sprintf("%s/common/src/test.md", root)
+		createFile(count, src, dir)
 	}
 
 	fmt.Printf("Time took in go: %s\n", time.Since(start))
@@ -41,13 +44,13 @@ func cleanUp(path string) {
 	fmt.Printf("Total deleted: %d bytes\n", size)
 }
 
-func createFile(count int, dir string) {
+func createFile(count int, src, dir string) {
 	start := time.Now()
 
 	var sumNBytes int64
 
-	src, _ := os.Open("./src/test.md")
-	defer src.Close()
+	file, _ := os.Open(src)
+	defer file.Close()
 
 	var fn string
 	var dst *os.File
@@ -58,7 +61,7 @@ func createFile(count int, dir string) {
 		dst, _ = os.Create(fn)
 		defer dst.Close()
 
-		nBytes, _ = io.Copy(dst, src)
+		nBytes, _ = io.Copy(dst, file)
 
 		sumNBytes += nBytes
 	}
