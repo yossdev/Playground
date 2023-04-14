@@ -61,6 +61,7 @@ func createFile(count int, src, dir string) {
 		dst, _ = os.Create(fn)
 		defer dst.Close()
 
+		file.Seek(0, io.SeekStart)
 		nBytes, _ = io.Copy(dst, file)
 
 		sumNBytes += nBytes

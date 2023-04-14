@@ -1,0 +1,33 @@
+{
+  "folders": [
+    {
+      "path": "go"
+    },
+    {
+      "path": "rust"
+    },
+    {
+      "path": "nodejs",
+      "settings": {
+        "eslint.packageManager": "pnpm"
+      }
+    },
+    {
+      "path": "python"
+    },
+    {
+      "path": "denojs",
+      "settings": {
+        "deno.enable": true,
+        "eslint.packageManager": "pnpm"
+      }
+    },
+    {
+      "path": "dart"
+    },
+    {
+      "path": "."
+    }
+  ],
+  "settings": {}
+}
