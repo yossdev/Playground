@@ -18,7 +18,7 @@ func main() {
 	}
 
 	const root string = "D:/Code/Playground"
-	const cwd string = "go/writing-file"
+	const cwd string = "go/copy-file"
 	const dir string = "dst"
 
 	if cmdArgs == "clean" {

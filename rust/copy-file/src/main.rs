@@ -10,7 +10,7 @@ fn main() {
     }
 
     const ROOT: &str = "D:/Code/Playground";
-    const CWD: &str = "rust/writing-file";
+    const CWD: &str = "rust/copy-file";
     const DIR: &str = "dst";
 
     if cmd_args == "clean" {

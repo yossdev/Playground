@@ -9,7 +9,7 @@ export default function main() {
   }
 
   const root = "D:/Code/Playground";
-  const cwd = "denojs/writing-file";
+  const cwd = "denojs/copy-file";
   const dir = "dst";
 
   if (cmdArgs === "clean") {

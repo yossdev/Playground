@@ -12,7 +12,7 @@ def main():
         cmdArgs = sys.argv[1]
 
     root = "D:/Code/Playground"
-    cwd = "python/writing-file"
+    cwd = "python/copy-file"
     dir = "dst"
 
     if cmdArgs == "clean":

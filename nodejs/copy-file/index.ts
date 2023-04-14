@@ -10,7 +10,7 @@ function main() {
   }
 
   const root = "D:/Code/Playground";
-  const cwd = "nodejs/writing-file";
+  const cwd = "nodejs/copy-file";
   const dir = "dst";
 
   if (cmdArgs === "clean") {

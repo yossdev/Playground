@@ -1,3 +1,3 @@
-module writing-file
+module copy-file
 
 go 1.20
