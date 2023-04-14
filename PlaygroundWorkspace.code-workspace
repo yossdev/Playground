@@ -7,20 +7,13 @@
       "path": "rust"
     },
     {
-      "path": "nodejs",
-      "settings": {
-        "eslint.packageManager": "pnpm"
-      }
+      "path": "nodejs"
     },
     {
       "path": "python"
     },
     {
-      "path": "denojs",
-      "settings": {
-        "deno.enable": true,
-        "eslint.packageManager": "pnpm"
-      }
+      "path": "denojs"
     },
     {
       "path": "dart"
@@ -29,5 +22,8 @@
       "path": "."
     }
   ],
-  "settings": {}
+  "settings": {
+    "deno.enable": true,
+    "eslint.packageManager": "pnpm"
+  }
 }
