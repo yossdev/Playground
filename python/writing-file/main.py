@@ -11,8 +11,8 @@ def main():
     if len(sys.argv) > 1:
         cmdArgs = sys.argv[1]
 
-    root = 'D:/Code/Playground'
-    cwd = 'python/writing-file'
+    root = "D:/Code/Playground"
+    cwd = "python/writing-file"
     dir = "dst"
 
     if cmdArgs == "clean":
@@ -24,8 +24,7 @@ def main():
         createFile(count, src, dir)
 
     duration = time.time() - start
-    print(
-        f"Time took in python: {duration * 1000:.04f}ms")
+    print(f"Time took in python: {duration * 1000:.04f}ms")
 
 
 def cleanUp(pathDir):
@@ -56,8 +55,7 @@ def createFile(count, src, dir):
         shutil.copy(src, dst)
 
     duration = time.time() - start
-    print(
-        f"Time took in python createFile: {duration * 1000:.04f}ms")
+    print(f"Time took in python createFile: {duration * 1000:.04f}ms")
 
     print(f"Total written: {sumNBytes} bytes")
 
