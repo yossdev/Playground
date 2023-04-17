@@ -7,3 +7,12 @@ go/*/bin
 # nodejs
 nodejs/*/node_modules
 nodejs/*/dist
+
+# zig
+zig-cache/
+zig-out/
+/release/
+/debug/
+/build/
+/build-*/
+/docgen_tmp/

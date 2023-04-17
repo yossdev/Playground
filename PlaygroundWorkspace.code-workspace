@@ -4,19 +4,19 @@
       "path": "go"
     },
     {
+      "path": "zig"
+    },
+    {
       "path": "rust"
     },
     {
       "path": "nodejs"
     },
     {
-      "path": "python"
-    },
-    {
       "path": "denojs"
     },
     {
-      "path": "v"
+      "path": "python"
     },
     {
       "path": "."
