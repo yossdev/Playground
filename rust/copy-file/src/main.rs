@@ -17,9 +17,9 @@ fn main() {
         let path_dir = format!("{}/{}/{}", &ROOT, &CWD, &DIR);
         clean_up(&path_dir);
     } else {
-        const COUNT: i16 = 10000;
+        const COUNT: i16 = 10_000;
         let src = format!("{}/common/src/test.md", ROOT);
-        create_file(COUNT, &src, &DIR);
+        copy_file(COUNT, &src, &DIR);
     }
 
     let end = SystemTime::now();
@@ -42,7 +42,7 @@ fn clean_up(path_dir: &str) {
     print!("Total deleted: {} bytes\n", total_size)
 }
 
-fn create_file(count: i16, src: &str, dir: &str) {
+fn copy_file(count: i16, src: &str, dir: &str) {
     let start = SystemTime::now();
 
     let mut sum_n_bytes: u64 = 0;

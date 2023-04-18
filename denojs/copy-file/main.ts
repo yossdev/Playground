@@ -1,3 +1,4 @@
+import { existsSync } from "https://deno.land/std@0.182.0/fs/exists.ts";
 import * as path from "https://deno.land/std@0.183.0/path/mod.ts";
 
 export default function main() {
@@ -12,13 +13,17 @@ export default function main() {
   const cwd = "denojs/copy-file";
   const dir = "dst";
 
+  const pathDir = `${root}/${cwd}/${dir}`;
+  if (!existsSync(pathDir)) {
+    Deno.mkdirSync(pathDir);
+  }
+
   if (cmdArgs === "clean") {
-    const pathDir = `${root}/${cwd}/${dir}`;
     cleanUp(pathDir);
   } else {
     const count = 10_000;
     const src = `${root}/common/src/test.md`;
-    createFile(count, src, dir);
+    copyFile(count, src, dir);
   }
 
   console.timeEnd("Time took in denojs");
@@ -34,12 +39,11 @@ function cleanUp(pathDir: string) {
   const sumNBytes = stats.reduce((acc, { size }) => acc + size, 0);
 
   Deno.removeSync(pathDir, { recursive: true });
-  Deno.mkdirSync(pathDir);
 
   console.log(`Total deleted: ${sumNBytes} bytes`);
 }
 
-function createFile(count: number, src: string, dir: string) {
+function copyFile(count: number, src: string, dir: string) {
   console.time("Time took in denojs createFile");
 
   let sumNBytes = 0;

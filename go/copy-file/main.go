@@ -25,9 +25,9 @@ func main() {
 		pathDir := fmt.Sprintf("%s/%s/%s", root, cwd, dir)
 		cleanUp(pathDir)
 	} else {
-		const count = 10000
+		const count = 10_000
 		src := fmt.Sprintf("%s/common/src/test.md", root)
-		createFile(count, src, dir)
+		copyFile(count, src, dir)
 	}
 
 	fmt.Printf("Time took in go: %s\n", time.Since(start))
@@ -44,7 +44,7 @@ func cleanUp(path string) {
 	fmt.Printf("Total deleted: %d bytes\n", size)
 }
 
-func createFile(count int, src, dir string) {
+func copyFile(count int, src, dir string) {
 	start := time.Now()
 
 	var sumNBytes int64
@@ -67,7 +67,7 @@ func createFile(count int, src, dir string) {
 		sumNBytes += nBytes
 	}
 
-	fmt.Printf("Time took in go createFile: %s\n", time.Since(start))
+	fmt.Printf("Time took in go copyFile: %s\n", time.Since(start))
 	fmt.Printf("Total written: %d bytes\n", sumNBytes)
 }
 

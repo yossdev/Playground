@@ -1,4 +1,11 @@
-import { copyFileSync, mkdirSync, readdirSync, rmSync, statSync } from "fs";
+import {
+  copyFileSync,
+  existsSync,
+  mkdirSync,
+  readdirSync,
+  rmSync,
+  statSync,
+} from "fs";
 import path from "path";
 
 function main() {
@@ -13,13 +20,17 @@ function main() {
   const cwd = "nodejs/copy-file";
   const dir = "dst";
 
+  const pathDir = `${root}/${cwd}/${dir}`;
+  if (!existsSync(pathDir)) {
+    mkdirSync(pathDir);
+  }
+
   if (cmdArgs === "clean") {
-    const pathDir = `${root}/${cwd}/${dir}`;
     cleanUp(pathDir);
   } else {
-    const count: number = 10000;
+    const count: number = 10_000;
     const src = `${root}/common/src/test.md`;
-    createFile(count, src, dir);
+    copyFile(count, src, dir);
   }
 
   console.timeEnd("Time took in nodejs");
@@ -33,12 +44,11 @@ function cleanUp(pathDir: string) {
   const sumNBytes = stats.reduce((acc, { size }) => acc + size, 0);
 
   rmSync(pathDir, { recursive: true, force: true });
-  mkdirSync(pathDir);
 
   console.log(`Total deleted: ${sumNBytes} bytes`);
 }
 
-function createFile(count: number, src: string, dir: string) {
+function copyFile(count: number, src: string, dir: string) {
   console.time("Time took in nodejs createFile");
 
   let sumNBytes: number = 0;
