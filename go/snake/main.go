@@ -167,9 +167,7 @@ func nextMove(snake snake, screen vec2D) []int {
 			continue
 		}
 
-		if !collideWithSelf {
-			validNextMove = append(validNextMove, []int{y1, x1})
-		}
+		validNextMove = append(validNextMove, []int{y1, x1})
 	}
 
 	nValidNextMove := len(validNextMove)
