@@ -34,8 +34,8 @@ func (window Vec2D) Render() {
 
 func (window Vec2D) Update(snake player.Snake, alive *bool) {
 
-	// nm := snake.Move()
-	nm := snake.RandomNextMove()
+	nm := snake.Move()
+	// nm := snake.RandomNextMove()
 	collide := isCollide(window, nm)
 	if collide {
 		*alive = false
@@ -93,7 +93,7 @@ func isCollide(window Vec2D, coord [2]int) bool {
 	y1, x1 := coord[0], coord[1]
 
 	Ymax, Xmax := WindowSize(window)
-	collideWithWall := y1 > Ymax || x1 > Xmax
+	collideWithWall := y1 > Ymax || x1 > Xmax || y1 < 0 || x1 < 0
 	if collideWithWall {
 		return true
 	}
